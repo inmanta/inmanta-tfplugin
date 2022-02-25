@@ -1,0 +1,94 @@
+pipeline {
+  agent none
+  options {
+    disableConcurrentBuilds()
+    timestamps()
+    timeout(time: 120, unit: 'MINUTES')
+  }
+  parameters {
+    booleanParam(name: 'RELEASE_DEV', defaultValue: true, description: 'Build a dev release and publish it to devpi')
+    booleanParam(name: 'RELEASE_STABLE', defaultValue: false, description: 'Build a stable release and publish it to pypi')
+  }
+  stages {
+    stage('main stage') {
+      agent any
+      stages {
+        stage('Setup') {
+          steps {
+            script {
+              sh '''
+              python3 -m venv ${WORKSPACE}/env
+              . "${WORKSPACE}"/env/bin/activate
+
+              git clone https://github.com:inmanta/inmanta-tfplugin.git
+              cd inmanta-tfplugin/
+              make install
+              '''
+            }
+          }
+        }
+        stage('Publish inmanta-tfplugin to dev-pi') {
+          when {
+            expression { return RELEASE_DEV == 'true' }
+          }
+          steps {
+            withCredentials([
+              usernamePassword(
+                credentialsId: 'devpi-user',
+                passwordVariable: 'DEVPI_PASS',
+                usernameVariable: 'DEVPI_USER'
+              )
+            ]) {
+              sh '''
+                ${WORKSPACE}/env/bin/pip3 install -U devpi-client
+                ${WORKSPACE}/env/bin/devpi use https://artifacts.internal.inmanta.com/inmanta/dev
+                ${WORKSPACE}/env/bin/devpi login ${DEVPI_USER} --password=${DEVPI_PASS}
+
+                cd inmanta-tfplugin/
+                rm -f dist/*
+
+                "${WORKSPACE}/env/bin/python3" setup.py egg_info -Db ".dev$(date +'%Y%m%d%H%M%S' --utc)" sdist
+
+                ${WORKSPACE}/env/bin/devpi upload dist/*
+                ${WORKSPACE}/env/bin/devpi logoff
+                '''
+            }
+          }
+        }
+        stage('Publish inmanta-tfplugin to pypi') {
+          when {
+            expression { return RELEASE_STABLE == 'true' }
+          }
+          steps {
+            withCredentials([
+              usernamePassword(
+                credentialsId: 'devpi-user',
+                passwordVariable: 'DEVPI_PASS',
+                usernameVariable: 'DEVPI_USER'
+              )
+            ]) {
+              sh '''
+                ${WORKSPACE}/env/bin/pip3 install -U devpi-client
+                ${WORKSPACE}/env/bin/devpi use https://artifacts.internal.inmanta.com/inmanta/dev
+                ${WORKSPACE}/env/bin/devpi login ${DEVPI_USER} --password=${DEVPI_PASS}
+
+                cd inmanta-tfplugin/
+                rm -f dist/*
+
+                "${WORKSPACE}/env/bin/python3" setup.py egg_info -Db ".dev$(date +'%Y%m%d%H%M%S' --utc)" sdist
+
+                ${WORKSPACE}/env/bin/devpi upload dist/*
+                ${WORKSPACE}/env/bin/devpi logoff
+                '''
+            }
+          }
+        }
+      }
+      post {
+        always {
+          deleteDir()
+        }
+      }
+    }
+  }
+}
