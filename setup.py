@@ -24,6 +24,7 @@ setup(
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.9",
     ],
     install_requires=Path("requirements.txt").read_text().split("\n"),
     entry_points={"pytest11": ["inmanta-tfplugin = inmanta_tfplugin"]},
