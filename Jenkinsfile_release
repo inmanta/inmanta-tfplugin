@@ -42,8 +42,8 @@ pipeline {
         stage("Publish to devpi") {
           when {
             allOf {
-              expression { "${release_type}" == "dev" }
               expression { "${do_release}" == "true" }
+              expression { "${release_type}" == "dev" }
             }
           }
           steps {
@@ -68,8 +68,8 @@ pipeline {
         stage("Publish to PyPi") {
           when {
             allOf {
-              expression { "${release_type}" == "stable" }
               expression { "${do_release}" == "true" }
+              expression { "${release_type}" == "stable" }
             }
           }
           steps {
