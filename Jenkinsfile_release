@@ -6,7 +6,7 @@ pipeline {
     timeout(time: 120, unit: 'MINUTES')
   }
   parameters {
-    booleanParam(name: 'RELEASE_DEV', defaultValue: true, description: 'Build a dev release and publish it to devpi')
+    booleanParam(name: 'RELEASE_DEV', defaultValue: false, description: 'Build a dev release and publish it to devpi')
     booleanParam(name: 'RELEASE_STABLE', defaultValue: false, description: 'Build a stable release and publish it to pypi')
   }
   stages {
