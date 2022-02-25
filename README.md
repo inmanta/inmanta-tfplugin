@@ -1,6 +1,8 @@
 # inmanta-tfplugin
 This package contains the generated python package for Terraform Plugin RPC protocol
 
+At inmanta, this is used by the terraform module, it was originally packaged in the module's plugins but we had to move it out because of an incompatibility between the agent file loading mechanism ([inmanta-core#2205](https://github.com/inmanta/inmanta-core/pull/2205) and [inmanta-core#2323](https://github.com/inmanta/inmanta-core/pull/2323)) and the protobuf library: https://github.com/protocolbuffers/protobuf/issues/9535
+
 ## How to use
 ```python
 import grpc
