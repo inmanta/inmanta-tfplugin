@@ -15,7 +15,9 @@ pipeline {
   }
   stages {
     stage('main stage') {
-      agent any
+      agent {
+        label 'gpg'
+      }
       stages {
         stage('Setup') {
           steps {
