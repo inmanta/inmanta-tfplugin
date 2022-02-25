@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from inmanta_tfplugin.tfplugin5 import tfplugin5_pb2 as inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2
+from inmanta_tfplugin import tfplugin5_pb2 as inmanta__tfplugin_dot_tfplugin5__pb2
 
 
 class ProviderStub(object):
@@ -16,63 +16,63 @@ class ProviderStub(object):
         """
         self.GetSchema = channel.unary_unary(
                 '/tfplugin5.Provider/GetSchema',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProviderSchema.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProviderSchema.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProviderSchema.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProviderSchema.Response.FromString,
                 )
         self.PrepareProviderConfig = channel.unary_unary(
                 '/tfplugin5.Provider/PrepareProviderConfig',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PrepareProviderConfig.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PrepareProviderConfig.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.PrepareProviderConfig.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.PrepareProviderConfig.Response.FromString,
                 )
         self.ValidateResourceTypeConfig = channel.unary_unary(
                 '/tfplugin5.Provider/ValidateResourceTypeConfig',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Response.FromString,
                 )
         self.ValidateDataSourceConfig = channel.unary_unary(
                 '/tfplugin5.Provider/ValidateDataSourceConfig',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateDataSourceConfig.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateDataSourceConfig.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateDataSourceConfig.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateDataSourceConfig.Response.FromString,
                 )
         self.UpgradeResourceState = channel.unary_unary(
                 '/tfplugin5.Provider/UpgradeResourceState',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.UpgradeResourceState.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.UpgradeResourceState.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.UpgradeResourceState.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.UpgradeResourceState.Response.FromString,
                 )
         self.Configure = channel.unary_unary(
                 '/tfplugin5.Provider/Configure',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Configure.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Configure.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.Configure.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.Configure.Response.FromString,
                 )
         self.ReadResource = channel.unary_unary(
                 '/tfplugin5.Provider/ReadResource',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadResource.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadResource.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadResource.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadResource.Response.FromString,
                 )
         self.PlanResourceChange = channel.unary_unary(
                 '/tfplugin5.Provider/PlanResourceChange',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PlanResourceChange.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PlanResourceChange.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.PlanResourceChange.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.PlanResourceChange.Response.FromString,
                 )
         self.ApplyResourceChange = channel.unary_unary(
                 '/tfplugin5.Provider/ApplyResourceChange',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ApplyResourceChange.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ApplyResourceChange.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ApplyResourceChange.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ApplyResourceChange.Response.FromString,
                 )
         self.ImportResourceState = channel.unary_unary(
                 '/tfplugin5.Provider/ImportResourceState',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ImportResourceState.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ImportResourceState.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ImportResourceState.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ImportResourceState.Response.FromString,
                 )
         self.ReadDataSource = channel.unary_unary(
                 '/tfplugin5.Provider/ReadDataSource',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadDataSource.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadDataSource.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadDataSource.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadDataSource.Response.FromString,
                 )
         self.Stop = channel.unary_unary(
                 '/tfplugin5.Provider/Stop',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Response.FromString,
                 )
 
 
@@ -160,63 +160,63 @@ def add_ProviderServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetSchema': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSchema,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProviderSchema.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProviderSchema.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProviderSchema.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProviderSchema.Response.SerializeToString,
             ),
             'PrepareProviderConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.PrepareProviderConfig,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PrepareProviderConfig.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PrepareProviderConfig.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.PrepareProviderConfig.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.PrepareProviderConfig.Response.SerializeToString,
             ),
             'ValidateResourceTypeConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.ValidateResourceTypeConfig,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Response.SerializeToString,
             ),
             'ValidateDataSourceConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.ValidateDataSourceConfig,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateDataSourceConfig.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateDataSourceConfig.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateDataSourceConfig.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateDataSourceConfig.Response.SerializeToString,
             ),
             'UpgradeResourceState': grpc.unary_unary_rpc_method_handler(
                     servicer.UpgradeResourceState,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.UpgradeResourceState.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.UpgradeResourceState.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.UpgradeResourceState.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.UpgradeResourceState.Response.SerializeToString,
             ),
             'Configure': grpc.unary_unary_rpc_method_handler(
                     servicer.Configure,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Configure.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Configure.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.Configure.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.Configure.Response.SerializeToString,
             ),
             'ReadResource': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadResource,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadResource.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadResource.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadResource.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadResource.Response.SerializeToString,
             ),
             'PlanResourceChange': grpc.unary_unary_rpc_method_handler(
                     servicer.PlanResourceChange,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PlanResourceChange.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PlanResourceChange.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.PlanResourceChange.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.PlanResourceChange.Response.SerializeToString,
             ),
             'ApplyResourceChange': grpc.unary_unary_rpc_method_handler(
                     servicer.ApplyResourceChange,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ApplyResourceChange.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ApplyResourceChange.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ApplyResourceChange.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ApplyResourceChange.Response.SerializeToString,
             ),
             'ImportResourceState': grpc.unary_unary_rpc_method_handler(
                     servicer.ImportResourceState,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ImportResourceState.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ImportResourceState.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ImportResourceState.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ImportResourceState.Response.SerializeToString,
             ),
             'ReadDataSource': grpc.unary_unary_rpc_method_handler(
                     servicer.ReadDataSource,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadDataSource.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadDataSource.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadDataSource.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ReadDataSource.Response.SerializeToString,
             ),
             'Stop': grpc.unary_unary_rpc_method_handler(
                     servicer.Stop,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -240,8 +240,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/GetSchema',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProviderSchema.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProviderSchema.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.GetProviderSchema.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.GetProviderSchema.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -257,8 +257,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/PrepareProviderConfig',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PrepareProviderConfig.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PrepareProviderConfig.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.PrepareProviderConfig.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.PrepareProviderConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -274,8 +274,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/ValidateResourceTypeConfig',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ValidateResourceTypeConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -291,8 +291,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/ValidateDataSourceConfig',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateDataSourceConfig.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateDataSourceConfig.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ValidateDataSourceConfig.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ValidateDataSourceConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -308,8 +308,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/UpgradeResourceState',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.UpgradeResourceState.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.UpgradeResourceState.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.UpgradeResourceState.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.UpgradeResourceState.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -325,8 +325,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/Configure',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Configure.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Configure.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.Configure.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.Configure.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -342,8 +342,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/ReadResource',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadResource.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadResource.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ReadResource.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ReadResource.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -359,8 +359,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/PlanResourceChange',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PlanResourceChange.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.PlanResourceChange.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.PlanResourceChange.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.PlanResourceChange.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -376,8 +376,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/ApplyResourceChange',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ApplyResourceChange.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ApplyResourceChange.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ApplyResourceChange.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ApplyResourceChange.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -393,8 +393,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/ImportResourceState',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ImportResourceState.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ImportResourceState.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ImportResourceState.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ImportResourceState.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -410,8 +410,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/ReadDataSource',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadDataSource.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ReadDataSource.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ReadDataSource.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ReadDataSource.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -427,8 +427,8 @@ class Provider(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provider/Stop',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -444,23 +444,23 @@ class ProvisionerStub(object):
         """
         self.GetSchema = channel.unary_unary(
                 '/tfplugin5.Provisioner/GetSchema',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProvisionerSchema.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProvisionerSchema.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProvisionerSchema.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProvisionerSchema.Response.FromString,
                 )
         self.ValidateProvisionerConfig = channel.unary_unary(
                 '/tfplugin5.Provisioner/ValidateProvisionerConfig',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateProvisionerConfig.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateProvisionerConfig.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateProvisionerConfig.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateProvisionerConfig.Response.FromString,
                 )
         self.ProvisionResource = channel.unary_stream(
                 '/tfplugin5.Provisioner/ProvisionResource',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ProvisionResource.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ProvisionResource.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ProvisionResource.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ProvisionResource.Response.FromString,
                 )
         self.Stop = channel.unary_unary(
                 '/tfplugin5.Provisioner/Stop',
-                request_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
-                response_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Response.FromString,
+                request_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
+                response_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Response.FromString,
                 )
 
 
@@ -496,23 +496,23 @@ def add_ProvisionerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetSchema': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSchema,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProvisionerSchema.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProvisionerSchema.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProvisionerSchema.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.GetProvisionerSchema.Response.SerializeToString,
             ),
             'ValidateProvisionerConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.ValidateProvisionerConfig,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateProvisionerConfig.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateProvisionerConfig.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateProvisionerConfig.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ValidateProvisionerConfig.Response.SerializeToString,
             ),
             'ProvisionResource': grpc.unary_stream_rpc_method_handler(
                     servicer.ProvisionResource,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ProvisionResource.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ProvisionResource.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.ProvisionResource.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.ProvisionResource.Response.SerializeToString,
             ),
             'Stop': grpc.unary_unary_rpc_method_handler(
                     servicer.Stop,
-                    request_deserializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Request.FromString,
-                    response_serializer=inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Response.SerializeToString,
+                    request_deserializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Request.FromString,
+                    response_serializer=inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Response.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -536,8 +536,8 @@ class Provisioner(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provisioner/GetSchema',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProvisionerSchema.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.GetProvisionerSchema.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.GetProvisionerSchema.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.GetProvisionerSchema.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -553,8 +553,8 @@ class Provisioner(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provisioner/ValidateProvisionerConfig',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateProvisionerConfig.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ValidateProvisionerConfig.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ValidateProvisionerConfig.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ValidateProvisionerConfig.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -570,8 +570,8 @@ class Provisioner(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_stream(request, target, '/tfplugin5.Provisioner/ProvisionResource',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ProvisionResource.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.ProvisionResource.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ProvisionResource.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.ProvisionResource.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -587,7 +587,7 @@ class Provisioner(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/tfplugin5.Provisioner/Stop',
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
-            inmanta__tfplugin_dot_tfplugin5_dot_tfplugin5__pb2.Stop.Response.FromString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Request.SerializeToString,
+            inmanta__tfplugin_dot_tfplugin5__pb2.Stop.Response.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -4,12 +4,12 @@ This package contains the generated python package for Terraform Plugin RPC prot
 ## How to use
 ```python
 import grpc
-import inmanta_tfplugin.tfplugin5.tfplugin5_pb2
-import inmanta_tfplugin.tfplugin5.tfplugin5_pb2_grpc
+import inmanta_tfplugin.tfplugin5_pb2
+import inmanta_tfplugin.tfplugin5_pb2_grpc
 
 proto_addr = ""
 channel = grpc.insecure_channel(proto_addr)
-stub = inmanta_tfplugin.tfplugin5.tfplugin5_pb2_grpc.ProviderStub(channel)
+stub = inmanta_tfplugin.tfplugin5_pb2_grpc.ProviderStub(channel)
 ```
 
 A more complete usage example can be found in [inmanta's terraform module](https://github.com/inmanta/terraform).
