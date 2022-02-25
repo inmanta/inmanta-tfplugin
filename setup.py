@@ -10,6 +10,8 @@ setup(
     url="https://github.com/inmanta/inmanta-tfplugin",
     license="MPL 2.0",
     description="Auto generated python package for Terraform Plugin RPC protocol",
+    long_description_content_type="text/markdown",
+    long_description=Path("README.md").read_text(),
 
     # Package content
     packages=find_packages(where="src"),
