@@ -32,9 +32,9 @@ pipeline {
           steps {
             sh '''
               if [ "${release_type}" == "stable" ]; then
-                  ${WORKSPACE}/env/bin/python3 setup.py egg_info -Db "" sdist
+                ${WORKSPACE}/env/bin/python3 setup.py egg_info -Db "" sdist
               else
-                  ${WORKSPACE}/env/bin/python3 setup.py sdist
+                ${WORKSPACE}/env/bin/python3 setup.py egg_info -Db ".dev$(date +'%Y%m%d%H%M%S' --utc)" sdist
               fi
             '''
           }
