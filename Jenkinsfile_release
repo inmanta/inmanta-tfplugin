@@ -6,8 +6,12 @@ pipeline {
     timeout(time: 120, unit: 'MINUTES')
   }
   parameters {
-    booleanParam(name: 'RELEASE_DEV', defaultValue: false, description: 'Build a dev release and publish it to devpi')
-    booleanParam(name: 'RELEASE_STABLE', defaultValue: false, description: 'Build a stable release and publish it to pypi')
+    choice(
+      name: 'release_type',
+      choices: ['dev', 'stable'],
+      description: 'Indicate whether a dev or stable release should be built.'
+    )
+    booleanParam(name: 'do_release', defaultValue: false, description: 'Publish the packet that has been built')
   }
   stages {
     stage('main stage') {
@@ -24,9 +28,23 @@ pipeline {
             }
           }
         }
-        stage('Publish inmanta-tfplugin to dev-pi') {
+        stage("Build dist") {
+          steps {
+            sh '''
+              if [ "${release_type}" == "stable" ]; then
+                  ${WORKSPACE}/env/bin/python3 setup.py egg_info -Db "" sdist
+              else
+                  ${WORKSPACE}/env/bin/python3 setup.py sdist
+              fi
+            '''
+          }
+        }
+        stage("Publish to devpi") {
           when {
-            expression { return RELEASE_DEV == 'true' }
+            allOf {
+              expression { "${release_type}" == "dev" }
+              expression { "${do_release}" == "true" }
+            }
           }
           steps {
             withCredentials([
@@ -38,43 +56,36 @@ pipeline {
             ]) {
               sh '''
                 ${WORKSPACE}/env/bin/pip3 install -U devpi-client
-                ${WORKSPACE}/env/bin/devpi use https://artifacts.internal.inmanta.com/inmanta/dev
+                ${WORKSPACE}/env/bin/devpi use https://artifacts.internal.inmanta.com/inmanta/${release_type}
                 ${WORKSPACE}/env/bin/devpi login ${DEVPI_USER} --password=${DEVPI_PASS}
-
-                rm -f dist/*
-
-                "${WORKSPACE}/env/bin/python3" setup.py egg_info -Db ".dev$(date +'%Y%m%d%H%M%S' --utc)" sdist
-
+                # upload packages
                 ${WORKSPACE}/env/bin/devpi upload dist/*
                 ${WORKSPACE}/env/bin/devpi logoff
-                '''
+              '''
             }
           }
         }
-        stage('Publish inmanta-tfplugin to pypi') {
+        stage("Publish to PyPi") {
           when {
-            expression { return RELEASE_STABLE == 'true' }
+            allOf {
+              expression { "${release_type}" == "stable" }
+              expression { "${do_release}" == "true" }
+            }
           }
           steps {
             withCredentials([
               usernamePassword(
-                credentialsId: 'devpi-user',
-                passwordVariable: 'DEVPI_PASS',
-                usernameVariable: 'DEVPI_USER'
-              )
+                credentialsId: 'inmantaci_on_pypi',
+                passwordVariable: 'TWINE_PASSWORD',
+                usernameVariable: 'TWINE_USERNAME'
+              ),
+              string(credentialsId: 'package_gpg_passphrase', variable: 'PGP_PASS')
             ]) {
               sh '''
-                ${WORKSPACE}/env/bin/pip3 install -U devpi-client
-                ${WORKSPACE}/env/bin/devpi use https://artifacts.internal.inmanta.com/inmanta/dev
-                ${WORKSPACE}/env/bin/devpi login ${DEVPI_USER} --password=${DEVPI_PASS}
-
-                rm -f dist/*
-
-                "${WORKSPACE}/env/bin/python3" setup.py egg_info -Db ".dev$(date +'%Y%m%d%H%M%S' --utc)" sdist
-
-                ${WORKSPACE}/env/bin/devpi upload dist/*
-                ${WORKSPACE}/env/bin/devpi logoff
-                '''
+                ${WORKSPACE}/env/bin/python3 -m pip install -U twine
+                echo "${PGP_PASS}" | gpg --pinentry-mode loopback -u code@inmanta.com --passphrase-fd 0 --detach-sign --batch --yes -a dist/*.tar.gz
+                ${WORKSPACE}/env/bin/python3 -m twine upload dist/*.tar.gz{,.asc}
+              '''
             }
           }
         }
